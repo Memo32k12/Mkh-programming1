@@ -123,13 +123,13 @@ body.landing #lp{display:flex}
 #stw.fs #cv{width:min(var(--sw),calc(var(--sh)*4/3));aspect-ratio:4/3}
 
 /* --- character size + on-screen control pad --- */
-#pg[aria-pressed=true],#zb[aria-pressed=true]{background:var(--ac);color:#fff;border-color:var(--ac)}
-#fpg,#fzb{display:none;position:absolute;top:calc(10px + env(safe-area-inset-top,0px));z-index:6;width:44px;min-height:44px;padding:0;background:#000a;color:#fff;border:1px solid #fff4;font-size:18px}
-#fpg{inset-inline-end:62px}#fzb{inset-inline-end:114px}#stw.fs #fpg,#stw.fs #fzb{display:block}
-#pad{position:fixed;z-index:45;width:min(46vw,176px);aspect-ratio:1;border-radius:50%;direction:ltr;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;background:#101728c4;box-shadow:0 0 0 2px #ffffff40,0 10px 30px #0006;cursor:grab}
-#pad button{position:absolute;width:30%;height:30%;min-height:0;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid #fff5;background:#ffffff26;color:#fff;touch-action:none;font-size:clamp(9px,2.6vw,13px)}
-#pad button.on{background:var(--ac);transform:scale(.92)}#pad button:focus-visible{outline-color:#fff}#pad svg{width:56%;height:56%}
-#askbox:not([hidden])~#pad{display:none}body.landing #pad,body.landing #zp{display:none}
+#pg[aria-pressed=true],#pg2[aria-pressed=true],#zb[aria-pressed=true]{background:var(--ac);color:#fff;border-color:var(--ac)}
+#fpg,#fpg2,#fzb{display:none;position:absolute;top:calc(10px + env(safe-area-inset-top,0px));z-index:6;width:44px;min-height:44px;padding:0;background:#000a;color:#fff;border:1px solid #fff4;font-size:18px}
+#fpg{inset-inline-end:62px}#fzb{inset-inline-end:114px}#fpg2{inset-inline-end:166px}#stw.fs #fpg,#stw.fs #fpg2,#stw.fs #fzb{display:block}
+#pad,#pad2{position:fixed;z-index:45;width:min(46vw,176px);aspect-ratio:1;border-radius:50%;direction:ltr;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;background:#101728c4;box-shadow:0 0 0 2px #ffffff40,0 10px 30px #0006;cursor:grab}
+#pad button,#pad2 button{position:absolute;width:30%;height:30%;min-height:0;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid #fff5;background:#ffffff26;color:#fff;touch-action:none;font-size:clamp(9px,2.6vw,13px)}
+#pad button.on,#pad2 button.on{background:var(--ac);transform:scale(.92)}#pad button:focus-visible,#pad2 button:focus-visible{outline-color:#fff}#pad svg,#pad2 svg{width:56%;height:56%}#pad2{background:#3a1736c4}#pad2 button.on{background:#e5368a}
+#askbox:not([hidden])~#pad,#askbox:not([hidden])~#pad2{display:none}body.landing #pad,body.landing #pad2,body.landing #zp{display:none}
 #zp{position:fixed;z-index:46;width:min(92vw,320px);box-sizing:border-box;display:grid;gap:8px;padding:12px;background:var(--pn);color:var(--tx);border:1px solid var(--ln);border-radius:16px;box-shadow:0 12px 34px #0005}
 .zr{display:flex;align-items:center;gap:8px}#zr{flex:1;min-width:0;height:32px;accent-color:var(--ac)}#zz{flex:1}
 #dd{width:min(94vw,430px)}#dd p{color:var(--mut);margin:8px 0 12px}#dd .btns button{flex:1;min-width:80px}
@@ -324,13 +324,17 @@ dialog{padding:var(--s4);max-height:94dvh}.dh{font-size:17px}
 #ctl{grid-column:2;width:auto;display:grid;grid-template-columns:repeat(2,42px);grid-auto-rows:42px;gap:6px;padding:6px;overflow-x:hidden;overflow-y:auto;max-height:calc(100dvh - 62px);align-content:start}
 #ctl>*,#tray button{width:42px;min-width:0;height:42px;min-height:0;padding:0}
 #gf,#sb{position:sticky;top:0;inset-inline-start:auto}#tray{display:contents}}
+
+/* variables UI (Scratch style) */
+.vrow{display:flex;align-items:center;gap:8px;margin:8px 0}.vrow>input[type=checkbox]{width:20px;height:20px;flex:none;margin:0;accent-color:var(--ac)}#blocks .vrow .b{margin:0;min-width:0;max-width:100%}.vrow .ib{width:34px;min-height:34px;font-size:14px;flex:none;padding:0}
+#vd{width:min(92vw,400px)}#vd p{margin:12px 0 0}#vdi{width:100%;box-sizing:border-box;min-height:46px;margin-top:var(--s3);border:1px solid var(--ln);border-radius:var(--r1);padding:0 var(--s3);background:var(--ws);color:var(--tx);font:inherit;font-weight:700}#vd label{display:flex;align-items:center;gap:10px;padding:10px 0;font-weight:600}#vd label input{width:20px;height:20px;margin:0;accent-color:var(--ac)}#vd .verr{color:#e5484d;margin:6px 0 0;min-height:0;font-weight:600}#vd .verr:empty{display:none}
 </style></head><body class="landing">
 <header id="top"><b class="brand" data-i="title"></b><span id="svs" role="status" hidden><b></b><span></span></span><button id="bn"><span>＋</span><span class="lb" data-i="np"></span></button><button class="ib" id="bu">↶</button><button class="ib" id="br">↷</button><button class="ib" id="bc">✨</button><button class="ib" id="bm">☰</button></header>
 <div id="app"><nav id="rail"></nav>
 <aside id="pal"><div id="ph-row"><b id="ph"></b><button class="ib" id="pc">✕</button></div><div id="blocks"></div></aside>
 <main id="wsw"><div id="ws"><div id="wsin"></div></div><div id="wz" role="group"><button class="ib" id="wzo">−</button><button id="wzv">100%</button><button class="ib" id="wzi">+</button></div><div id="hint"><div class="hi">🧩</div><p data-i="hint"></p><button id="hx" data-i="ex"></button></div><div id="trash">🗑 <span data-i="drop"></span></div><div id="sbar" hidden><button id="sbd">⧉ <span data-i="dup"></span></button><button id="sbx">🗑 <span data-i="del"></span></button><button id="sbs">✂ <span data-i="dels"></span></button></div></main>
-<section id="st"><div id="stw"><canvas id="cv" width="480" height="360"></canvas><button class="ib" id="fx">✕</button><button class="ib" id="fpg" aria-pressed="false">🎮</button><button class="ib" id="fzb" aria-pressed="false">🔍</button><div id="askbox" hidden><span id="askq"></span><div><input id="ai"><button id="ao">OK</button></div></div><div id="pad" role="group" hidden></div><div id="zp" role="dialog" hidden><b id="zt"></b><div class="zr"><button class="ib" id="zm">−</button><input type="range" id="zr" min="5" max="400" step="1"><button class="ib" id="zpl">+</button></div><div class="zr"><input type="number" id="zn" min="5" max="400" inputmode="numeric"><b>%</b><button id="zz"></button><button class="ib" id="zc">✕</button></div></div></div>
-<div id="ctl"><button id="gf">🏁</button><button id="sb">■</button><button class="ib" id="sz">⤢</button><button class="ib" id="fs">⛶</button><button class="ib" id="pg" aria-pressed="false">🎮</button><button class="ib" id="zb" aria-pressed="false">🔍</button><button id="bch">🎭 <span class="lb2" data-i="chars"></span></button><button id="cdup">⧉ <span class="lb2" data-i="duplicateCharacter"></span></button><button id="cdir">↻ <span class="lb2" data-i="direction"></span></button><button id="bbk">🖼 <span class="lb2" data-i="bds"></span></button><span id="ro"></span><div id="tray"></div><div id="msg"></div></div></section></div>
+<section id="st"><div id="stw"><canvas id="cv" width="480" height="360"></canvas><button class="ib" id="fx">✕</button><button class="ib" id="fpg" aria-pressed="false">🎮</button><button class="ib" id="fpg2" aria-pressed="false">🕹️</button><button class="ib" id="fzb" aria-pressed="false">🔍</button><div id="askbox" hidden><span id="askq"></span><div><input id="ai"><button id="ao">OK</button></div></div><div id="pad" role="group" hidden></div><div id="pad2" role="group" hidden></div><div id="zp" role="dialog" hidden><b id="zt"></b><div class="zr"><button class="ib" id="zm">−</button><input type="range" id="zr" min="5" max="400" step="1"><button class="ib" id="zpl">+</button></div><div class="zr"><input type="number" id="zn" min="5" max="400" inputmode="numeric"><b>%</b><button id="zz"></button><button class="ib" id="zc">✕</button></div></div></div>
+<div id="ctl"><button id="gf">🏁</button><button id="sb">■</button><button class="ib" id="sz">⤢</button><button class="ib" id="fs">⛶</button><button class="ib" id="pg" aria-pressed="false">🎮</button><button class="ib" id="pg2" aria-pressed="false">🕹️</button><button class="ib" id="zb" aria-pressed="false">🔍</button><button id="bch">🎭 <span class="lb2" data-i="chars"></span></button><button id="ced">✎ <span class="lb2" data-i="editChar"></span></button><button id="cdup">⧉ <span class="lb2" data-i="duplicateCharacter"></span></button><button id="cdir">↻ <span class="lb2" data-i="direction"></span></button><button id="bbk">🖼 <span class="lb2" data-i="bds"></span></button><span id="ro"></span><div id="tray"></div><div id="msg"></div></div></section></div>
 <div id="ind" hidden></div><div id="toast" role="status" hidden></div><div id="menu" hidden></div>
 <dialog id="mn"><div class="dh"><b data-i="menu"></b><button class="ib" id="mc">✕</button></div><button id="bpj"></button><h4 data-i="ex"></h4><div id="exl"></div><h4 data-i="ch"></h4><div id="chl"></div><div class="btns"><button id="bsv" data-i="savep"></button><button id="be" data-i="exp"></button><button id="bi" data-i="imp"></button><button id="bl"></button></div></dialog>
 <dialog id="pj"><div class="dh"><b id="pjt"></b><button class="ib" id="pjx">✕</button></div><div id="pjl"></div><div class="btns"><button id="pjn"></button></div></dialog>
@@ -363,7 +367,7 @@ const stopSnd=()=>{act.forEach(o=>{try{o.stop()}catch(e){}});act.clear()};
 /* ===== block registry: R(id,category,type,label,defaults,tooltip,exec,extras) ===== */
 const B={},COL={motion:'#4c97ff',looks:'#9966ff',sound:'#cf63cf',events:'#d99a00',control:'#ef8c12',sensing:'#3d9fc7',ops:'#3fae3f',vars:'#ee7d16',pen:'#0fa07a'};
 const R=(id,c,t,l,a,tip,x,o)=>B[id]=Object.assign({id,c,t,l,a,tip,x},o);
-const KEYS=['space','up arrow','down arrow','left arrow','right arrow','any',...'abcdefghijklmnopqrstuvwxyz0123456789'.split('')],MS=['message1','message2','message3'],LN=()=>Object.keys(P.lists),VN=()=>Object.keys(P.vars),LS=n=>P.lists[n]||[];
+const KEYS=['space','up arrow','down arrow','left arrow','right arrow','any',...'abcdefghijklmnopqrstuvwxyz0123456789'.split('')],MS=['message1','message2','message3'],hk=(o,n)=>!!o&&Object.prototype.hasOwnProperty.call(o,n),srt=a=>a.sort((x,y)=>{x=x.toLowerCase();y=y.toLowerCase();return x<y?-1:x>y?1:0}),LN=()=>srt([...new Set(Object.keys(P.lists).concat(main&&main.ll?Object.keys(main.ll):[]))]),VN=()=>srt([...new Set(Object.keys(P.vars).concat(main&&main.lv?Object.keys(main.lv):[]))]),vOf=(p,n)=>hk(p&&p.lv,n)?p.lv:P.vars,lOf=(p,n)=>hk(p&&p.ll,n)?p.ll:P.lists,LS=(n,p)=>lOf(p||main,n)[n]||[],monSet=(p,n,v)=>{if(hk(p&&p.lv,n)||hk(p&&p.ll,n)){p.lm=p.lm||{};p.lm[n]=v}else P.mon[n]=v},monGet=(p,n)=>hk(p&&p.lv,n)||hk(p&&p.ll,n)?!!(p.lm&&p.lm[n]):!!P.mon[n];
 const lc=s=>(''+s).toLowerCase();
 Object.assign(AR,{pointM:'اتجه نحو %1',dist:'المسافة إلى %1',mkclone:'أنشئ نسخة من %1',layer:'اذهب إلى الطبقة %1',layerF:'اذهب %1 %2 طبقات',switchBW:'بدّل الخلفية إلى %1 وانتظر',chsfx:'غيّر تأثير %1 بمقدار %2',setsfx:'اجعل تأثير %1 يساوي %2',clrsfx:'أزل تأثيرات الصوت',settempo:'اجعل الإيقاع %1',chtempo:'غيّر الإيقاع بمقدار %1',tempo:'الإيقاع',sof:'%1 لـ %2',dragm:'اجعل السحب %1',user:'اسم المستخدم',chpp:'غيّر %1 القلم بمقدار %2',setpp:'اجعل %1 القلم يساوي %2'});
 const SN=()=>P.sprites.map(e=>e.n),si=n=>P.sprites.findIndex(e=>e.n==n),
@@ -495,22 +499,22 @@ op('round','round %1','Rounds to the nearest whole number.',a=>Math.round(num(a[
 R('mathf','ops','rep','%1 of %2',['abs',10],'Applies a math function.',(t,a)=>{const F={abs:Math.abs,floor:Math.floor,ceiling:Math.ceil,sqrt:Math.sqrt,sin:v=>Math.sin(v*R2),cos:v=>Math.cos(v*R2),tan:v=>Math.tan(v*R2),asin:v=>Math.asin(v)/R2,acos:v=>Math.acos(v)/R2,atan:v=>Math.atan(v)/R2,ln:Math.log,log:Math.log10,'e ^':Math.exp,'10 ^':v=>10**v};return F[a[0]](num(a[1]))},{o:{0:['abs','floor','ceiling','sqrt','sin','cos','tan','asin','acos','atan','ln','log','e ^','10 ^']}});
 op('contains','%1 contains %2 ?','True if the first text has the second.',a=>lc(a[0]).includes(lc(a[1])),'bool',['apple','a']);
 // Variables & lists
-R('var','vars','rep','%1',[''],'A variable\'s value.',(t,a)=>P.vars[a[0]]??0,{hide:1});
-R('lvar','vars','rep','%1',[''],'All items of a list.',(t,a)=>LS(a[0]).join(' '),{hide:1});
-R('setv','vars','stack','set %1 to %2',[null,0],'Stores a value in a variable.',(t,a)=>P.vars[a[0]]=a[1],{o:{0:VN},need:'v'});
-R('chv','vars','stack','change %1 by %2',[null,1],'Adds to a variable.',(t,a)=>P.vars[a[0]]=num(P.vars[a[0]])+num(a[1]),{o:{0:VN},need:'v'});
-R('showv','vars','stack','show variable %1',[null],'Shows the monitor on the stage.',(t,a)=>P.mon[a[0]]=1,{o:{0:()=>VN().concat(LN())},need:'v'});
-R('hidev','vars','stack','hide variable %1',[null],'Hides the monitor.',(t,a)=>P.mon[a[0]]=0,{o:{0:()=>VN().concat(LN())},need:'v'});
+R('var','vars','rep','%1',[''],'A variable\'s value.',(t,a)=>vOf(t.p,a[0])[a[0]]??0,{hide:1});
+R('lvar','vars','rep','%1',[''],'All items of a list.',(t,a)=>LS(a[0],t.p).join(' '),{hide:1});
+R('setv','vars','stack','set %1 to %2',[null,0],'Stores a value in a variable.',(t,a)=>vOf(t.p,a[0])[a[0]]=a[1],{o:{0:VN},need:'v'});
+R('chv','vars','stack','change %1 by %2',[null,1],'Adds to a variable.',(t,a)=>{const o=vOf(t.p,a[0]);o[a[0]]=num(o[a[0]])+num(a[1])},{o:{0:VN},need:'v'});
+R('showv','vars','stack','show variable %1',[null],'Shows the monitor on the stage.',(t,a)=>monSet(t.p,a[0],1),{o:{0:()=>VN().concat(LN())},need:'v'});
+R('hidev','vars','stack','hide variable %1',[null],'Hides the monitor.',(t,a)=>monSet(t.p,a[0],0),{o:{0:()=>VN().concat(LN())},need:'v'});
 const lo={o:{1:LN},need:'l'};
-R('ladd','vars','stack','add %1 to %2',['thing',null],'Adds an item to the end of a list.',(t,a)=>{LS(a[1]).push(a[0])},lo);
-R('ldel','vars','stack','delete %1 of %2',[1,null],'Removes an item from a list.',(t,a)=>{const l=LS(a[1]);if(lc(a[0])=='all')l.length=0;else{const i=lix(a[0],l.length);if(i>=1&&i<=l.length)l.splice(i-1,1)}},lo);
-R('ldelall','vars','stack','delete all of %1',[null],'Empties a list.',(t,a)=>{LS(a[0]).length=0},{o:{0:LN},need:'l'});
-R('lins','vars','stack','insert %1 at %2 of %3',['thing',1,null],'Inserts an item at a position.',(t,a)=>{const l=LS(a[2]),i=lix(a[1],l.length,1);if(i>=1&&i<=l.length+1)l.splice(i-1,0,a[0])},{o:{2:LN},need:'l'});
-R('lrep','vars','stack','replace item %1 of %2 with %3',[1,null,'thing'],'Replaces an item.',(t,a)=>{const l=LS(a[1]),i=lix(a[0],l.length)-1;if(i>=0&&i<l.length)l[i]=a[2]},{o:{1:LN},need:'l'});
-R('litem','vars','rep','item %1 of %2',[1,null],'Reads one item of a list.',(t,a)=>{const l=LS(a[1]);return l[lix(a[0],l.length)-1]??''},lo);
-R('lidx','vars','rep','item # of %1 in %2',['thing',null],'Finds where an item is (0 if missing).',(t,a)=>LS(a[1]).findIndex(x=>lc(x)==lc(a[0]))+1,lo);
-R('llen','vars','rep','length of list %1',[null],'How many items are in the list.',(t,a)=>LS(a[0]).length,{o:{0:LN},need:'l'});
-R('lcont','vars','bool','%1 contains %2 ?',[null,'thing'],'True if the list has the item.',(t,a)=>LS(a[0]).some(x=>lc(x)==lc(a[1])),{o:{0:LN},need:'l'});
+R('ladd','vars','stack','add %1 to %2',['thing',null],'Adds an item to the end of a list.',(t,a)=>{LS(a[1],t.p).push(a[0])},lo);
+R('ldel','vars','stack','delete %1 of %2',[1,null],'Removes an item from a list.',(t,a)=>{const l=LS(a[1],t.p);if(lc(a[0])=='all')l.length=0;else{const i=lix(a[0],l.length);if(i>=1&&i<=l.length)l.splice(i-1,1)}},lo);
+R('ldelall','vars','stack','delete all of %1',[null],'Empties a list.',(t,a)=>{LS(a[0],t.p).length=0},{o:{0:LN},need:'l'});
+R('lins','vars','stack','insert %1 at %2 of %3',['thing',1,null],'Inserts an item at a position.',(t,a)=>{const l=LS(a[2],t.p),i=lix(a[1],l.length,1);if(i>=1&&i<=l.length+1)l.splice(i-1,0,a[0])},{o:{2:LN},need:'l'});
+R('lrep','vars','stack','replace item %1 of %2 with %3',[1,null,'thing'],'Replaces an item.',(t,a)=>{const l=LS(a[1],t.p),i=lix(a[0],l.length)-1;if(i>=0&&i<l.length)l[i]=a[2]},{o:{1:LN},need:'l'});
+R('litem','vars','rep','item %1 of %2',[1,null],'Reads one item of a list.',(t,a)=>{const l=LS(a[1],t.p);return l[lix(a[0],l.length)-1]??''},lo);
+R('lidx','vars','rep','item # of %1 in %2',['thing',null],'Finds where an item is (0 if missing).',(t,a)=>LS(a[1],t.p).findIndex(x=>lc(x)==lc(a[0]))+1,lo);
+R('llen','vars','rep','length of list %1',[null],'How many items are in the list.',(t,a)=>LS(a[0],t.p).length,{o:{0:LN},need:'l'});
+R('lcont','vars','bool','%1 contains %2 ?',[null,'thing'],'True if the list has the item.',(t,a)=>LS(a[0],t.p).some(x=>lc(x)==lc(a[1])),{o:{0:LN},need:'l'});
 // Pen
 R('pdown','pen','stack','pen down',[],'Starts drawing when it moves.',t=>t.p.pd=1);
 R('pup','pen','stack','pen up',[],'Stops drawing.',t=>t.p.pd=0);
@@ -687,7 +691,8 @@ function draw(now){drawRaf=0;try{drawFrame(now||performance.now())}catch(e){cons
 function drawFrame(now){const busy=TH.length>0||lastTH>0||sd;lastTH=TH.length;
  if(!busy&&dirty<=0)return;dirty=Math.max(0,dirty-1);lastDraw=now;
  X.clearRect(0,0,480,360);X.drawImage(bdc(P.bds[bd-1]||P.bds[0]),0,0);X.drawImage(penCv,0,0);for(const p of SP){if(!p.v)continue;drawSprite(X,p);if(p.say)bubble(p)}
- let y=6;X.font='bold 12px system-ui';X.textAlign='left';for(const n in P.mon){if(!P.mon[n])continue;const v=n in P.vars?P.vars[n]:LS(n).slice(0,5).join(', '),s=n+': '+(typeof v=='number'?Math.round(v*100)/100:v),w=X.measureText(s).width+12;X.fillStyle='#e8ecf5';X.fillRect(6,y,w,20);X.fillStyle='#222';X.fillText(s,12,y+14);y+=24}
+ let y=6;X.font='bold 12px system-ui';X.textAlign='left';const mons=[];for(const n in P.mon)if(P.mon[n])mons.push([n,n,P.vars,P.lists]);OS.forEach((q,i)=>{if(q.lm)for(const n in q.lm)if(q.lm[n]&&(hk(q.lv,n)||hk(q.ll,n)))mons.push([(P.sprites[i]&&P.sprites[i].n||'')+': '+n,n,q.lv||{},q.ll||{}])});
+ for(const[lb,n,V,Q]of mons){const v=n in V?V[n]:(Q[n]||[]).slice(0,5).join(', '),s=lb+': '+(typeof v=='number'?Math.round(v*100)/100:v),w=X.measureText(s).width+12;X.fillStyle='#e8ecf5';X.fillRect(6,y,w,20);X.fillStyle='#222';X.fillText(s,12,y+14);y+=24}
  if(TH.length||lastRun){wi.querySelectorAll('.sc').forEach(e=>e.classList.toggle('run',TH.some(t=>t.sc===e._sc)));lastRun=TH.length>0}$('#gf').classList.toggle('on',TH.length>0);
  const ro=`x ${Math.round(main.x)}  y ${Math.round(main.y)}  dir ${Math.round(main.d)}`;if(ro!==lastRo){lastRo=ro;(roEl=roEl||$('#ro')).textContent=ro}}
 /* ===== input ===== */
@@ -734,8 +739,9 @@ function rb(n){const d=B[n.id],e=E('div','b t-'+d.t+' '+d.c);e._n=n;if(n===selN)
 function sl(n,i){const d=B[n.id],v=n.a[i];
  if(v&&v.id){const e=rb(v);e._p=n;e._i=i;return e}
  if(n.id=='var'||n.id=='lvar'){const s=E('span');s.textContent=v;return s}
+  if(d.col&&d.col[i]){const s=E('input','sl');s.type='color';s.value=/^#[0-9a-f]{6}$/i.test(v)?v:'#e5484d';s.style.cssText='width:46px;padding:2px 3px';s.oninput=()=>{n.a[i]=s.value};s.onchange=snap;s._s=[n,i];return s}
  const o=opts(d,i);
- if(o){const s=E('select','sl');o.forEach(x=>{const op=E('option','',s);op.value=x;op.textContent=d.lbl&&d.lbl[i]?d.lbl[i](x):x});s.value=v;s.onchange=()=>{n.a[i]=s.value;snap()};return s}
+ if(o){const s=E('select','sl');o.forEach(x=>{const op=E('option','',s);op.value=x;op.textContent=d.lbl&&d.lbl[i]?d.lbl[i](x):x});if(v==null&&o.length)n.a[i]=v=o[0];s.value=v;s.onchange=()=>{n.a[i]=s.value;snap()};if(DROP.has(n.id+':'+i))s._s=[n,i];return s}
  if(v==null){const s=E('span','sl bs');s._s=[n,i];return s}
  const s=E('input','sl');s.value=v;s.size=Math.max(2,(''+v).length);s.oninput=()=>{n.a[i]=s.value;s.size=Math.max(2,s.value.length)};s.onchange=snap;s._s=[n,i];return s}
 function snap(){H=H.slice(0,hi+1);H.push(JSON.stringify(P.scripts));if(H.length>100)H.shift();hi=H.length-1;persist()}
@@ -872,12 +878,12 @@ function regC(u){CHR[u.id]=[u.n];const i=new Image();i.src=u.d;IM[u.id]=[i,i]}
 function expCh(){const bs=VO.map(o=>bb(o,1)),x0=Math.min(...bs.map(b=>b[0])),y0=Math.min(...bs.map(b=>b[1])),x1=Math.max(...bs.map(b=>b[2])),y1=Math.max(...bs.map(b=>b[3])),Z=128,k=(Z-8)/Math.max(x1-x0,y1-y0,10),c=document.createElement('canvas');c.width=c.height=Z;const q=c.getContext('2d');q.translate(Z/2-(x0+x1)/2*k,Z/2-(y0+y1)/2*k);q.scale(k,k);VO.forEach(o=>dro(q,o));return c.toDataURL('image/png')}
 addEventListener('keydown',e=>{if(!$('#pd').open||e.target.matches('input'))return;e.stopImmediatePropagation();if((e.key=='Delete'||e.key=='Backspace')&&VS.length){e.preventDefault();ACT[1][3]();psnap();pdraw();pact()}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()=='a'){e.preventDefault();selAll()}},true);
 function wrap(p){p.cust=p.cust||[];for(const k in CHR)if(/^u\d/.test(k)){delete CHR[k];delete IM[k]}p.cust.forEach(regC);if(!p.sprites)p.sprites=[{k:'blob',scripts:p.scripts||[]}];p.sprites.forEach(e=>{if(!CHR[e.k])e.k='blob';e.scripts=e.scripts||[]});p.sprites.forEach(e=>{if(!e.n)e.n=uname(p.sprites,e.k);e.scripts.forEach(s=>fixN(s.b))});p.cur=Math.min(p.cur||0,p.sprites.length-1);p.bds=(p.bds||[{k:'sky'},{k:'stripes'},{k:'night'}]).filter(e=>e.k=='custom'?e.d:LIB[e.k]);if(!p.bds.length)p.bds=[{k:'white'}];delete p.scripts;Object.defineProperty(p,'scripts',{get(){return this.sprites[this.cur].scripts},set(v){this.sprites[this.cur].scripts=v},configurable:true});p.vars=p.vars||{};p.lists=p.lists||{};p.mon=p.mon||{};return p}
-function boot(){OS=P.sprites.map((e,i)=>{const m=mkS(i,e.k);if(Number.isFinite(e.x)&&Number.isFinite(e.y)){m.x=clampX(e.x);m.y=clampY(e.y)}if(Number.isFinite(e.z))m.z=Math.max(5,Math.min(1e3,e.z));if(Number.isFinite(e.d))m.d=Math.max(-180,Math.min(180,e.d));m.rs=e.rs||'all around';m.c=Number.isFinite(e.c)?e.c:1;m.fx=Object.assign({color:0,ghost:0,brightness:0},e.fx||{});return m});SP=OS.slice();main=OS[P.cur]}
+function boot(){OS=P.sprites.map((e,i)=>{const m=mkS(i,e.k);if(Number.isFinite(e.x)&&Number.isFinite(e.y)){m.x=clampX(e.x);m.y=clampY(e.y)}if(Number.isFinite(e.z))m.z=Math.max(5,Math.min(1e3,e.z));if(Number.isFinite(e.d))m.d=Math.max(-180,Math.min(180,e.d));m.rs=e.rs||'all around';m.c=Number.isFinite(e.c)?e.c:1;m.fx=Object.assign({color:0,ghost:0,brightness:0},e.fx||{});for(const k of['lv','ll','lm'])if(e[k])m[k]=e[k];return m});SP=OS.slice();main=OS[P.cur]}
 const MAXS=30;
 function addSprite(k){const i=P.sprites.length;if(i>=MAXS)return;P.sprites.push({k,scripts:[],n:uname(P.sprites,k)});const m=mkS(i,k);OS.push(m);SP.push(m)}
-function duplicateCharacter(){if(P.sprites.length>=MAXS){toast(tr('maxch'));return}syncSprites();const src=JSON.parse(JSON.stringify(P.sprites[P.cur]));const i=P.sprites.length;src.n=uname(P.sprites,src.k);src.x=Math.max(-240,Math.min(240,(src.x||0)+24));src.y=Math.max(-180,Math.min(180,(src.y||0)-24));P.sprites.push(src);const m=mkS(i,src.k);Object.assign(m,{x:src.x,y:src.y,d:src.d,z:src.z,c:src.c,rs:src.rs,fx:JSON.parse(JSON.stringify(src.fx||{}))});m.own=i;OS.push(m);SP.push(m);selSprite(i);persist();toast(tr('duplicateCharacter'))}
-function selSprite(i){P.cur=i;main=OS[i];selN=null;lastSc=null;H=[];hi=-1;snap();rw();tray()}
-function delSprite(i){if(P.sprites.length<2)return;const prev=JSON.parse(JSON.stringify(P));stopAll();P.sprites.splice(i,1);OS.splice(i,1);OS.forEach((m,j)=>m.own=j);SP=OS.slice();P.cur=Math.min(i,P.sprites.length-1);main=OS[P.cur];selN=null;lastSc=null;H=[];hi=-1;snap();rw();tray();toast(tr('deleted'),()=>load(prev))}
+function duplicateCharacter(){if(P.sprites.length>=MAXS){toast(tr('maxch'));return}syncSprites();const src=JSON.parse(JSON.stringify(P.sprites[P.cur]));const i=P.sprites.length;src.n=uname(P.sprites,src.k);src.x=Math.max(-240,Math.min(240,(src.x||0)+24));src.y=Math.max(-180,Math.min(180,(src.y||0)-24));P.sprites.push(src);const m=mkS(i,src.k);Object.assign(m,{x:src.x,y:src.y,d:src.d,z:src.z,c:src.c,rs:src.rs,fx:JSON.parse(JSON.stringify(src.fx||{}))});for(const k of['lv','ll','lm'])if(src[k])m[k]=src[k];m.own=i;OS.push(m);SP.push(m);selSprite(i);persist();toast(tr('duplicateCharacter'))}
+function selSprite(i){P.cur=i;main=OS[i];selN=null;lastSc=null;H=[];hi=-1;snap();rw();tray();pal()}
+function delSprite(i){if(P.sprites.length<2)return;const prev=JSON.parse(JSON.stringify(P));stopAll();P.sprites.splice(i,1);OS.splice(i,1);OS.forEach((m,j)=>m.own=j);SP=OS.slice();P.cur=Math.min(i,P.sprites.length-1);main=OS[P.cur];selN=null;lastSc=null;H=[];hi=-1;snap();rw();tray();pal();toast(tr('deleted'),()=>load(prev))}
 function tray(){const t=$('#tray');t.textContent='';P.sprites.forEach((e,i)=>{const b=E('button','th',t);b.setAttribute('aria-pressed',i==P.cur);b.title=CHR[e.k][0];E('img','',b).src=IM[e.k][0].src;b.onclick=()=>selSprite(i);if(i==P.cur&&P.sprites.length>1){const x=E('span','tx',b);x.textContent='✕';x.onclick=ev=>{ev.stopPropagation();delSprite(i)}}})}
 function cnt(){$('#cdn').textContent=tr('add')+' ('+pick.size+')';$('#cdn').disabled=!pick.size}
 function cards(){const g=$('#cg');g.textContent='';for(const k of[...pick])if(!CHR[k])pick.delete(k);for(const k in CHR){const b=E('button','cc',g);b.setAttribute('aria-pressed',pick.has(k));E('img','',b).src=IM[k][0].src;E('span','',b).textContent=CHR[k][0];b.onclick=()=>{pick.has(k)?pick.delete(k):pick.add(k);b.setAttribute('aria-pressed',pick.has(k));cnt()}}cnt()}const isR=n=>/rep|bool/.test(B[n.id].t);
@@ -945,11 +951,10 @@ function tabs(){const t=$('#rail');t.textContent='';for(const c in COL){const b=
 function pal(){const c=$('#blocks'),hv=VN().length,hl=LN().length;c.textContent='';if(PQ){searchPal(c);return}
  const add=n=>{const e=rb(n);e.style.margin='8px 0';c.append(e)};
  if(cat=='myblocks'){const b=E('button','mkb',c);b.textContent=tr('mkb');b.onclick=()=>mkname('b')}
- if(cat=='vars')[['mkv','v'],['mkl','l']].forEach(([k,f])=>{const b=E('button','mkb',c);b.textContent=tr(k);b.onclick=()=>mkname(f)});
- for(const id in B){const d=B[id];if(d.c==cat&&!d.hide&&!(d.need=='v'&&!hv)&&!(d.need=='l'&&!hl))add(N(id))}
- if(cat=='vars'){VN().forEach(n=>add({id:'var',a:[n],s:[]}));LN().forEach(n=>add({id:'lvar',a:[n],s:[]}))}
+ if(cat=='vars')varPal(c,add,hv,hl);
+ else for(const id in B){const d=B[id];if(d.c==cat&&!d.hide&&!(d.need=='v'&&!hv)&&!(d.need=='l'&&!hl))add(N(id))}
  if(cat=='myblocks'){BKN().forEach(n=>{const r=E('div','mkr',c);E('b','',r).textContent=n;const e=E('button','ib',r),d=E('button','ib',r),T=L=='ar'?['إعادة تسمية','حذف','إعادة تسمية الكتلة']:['Rename','Delete','Rename block'];e.textContent='✎';d.textContent='🗑';e.title=T[0];d.title=T[1];e.setAttribute('aria-label',T[0]);d.setAttribute('aria-label',T[1]);e.onclick=()=>pickName(n,v=>renBlock(n,v),T[2]);d.onclick=()=>delBlock(n);add(N('define',[n]));add(N('call',[n,0]))});if(BK().length)add(N('inp'))}fitPal()}
-function mkname(k){const d=E('div','mk'),i=E('input','',d);i.placeholder=tr('new');const b=E('button','',d);b.textContent='OK';
+function mkname(k){if(k=='v'||k=='l'){newVar(k);return}const d=E('div','mk'),i=E('input','',d);i.placeholder=tr('new');const b=E('button','',d);b.textContent='OK';
  b.onclick=()=>{const n=i.value.trim();if(!n)return;if(k=='b'){if(!BK().includes(n))BK().push(n);snap();pal();return}if(k=='v')P.vars[n]=0;else P.lists[n]=[];P.mon[n]=1;snap();pal()};$('#blocks').prepend(d);i.focus()}
 /* ===== workspace zoom + block search ===== */
 let PQ='',WZ=1;
@@ -1020,9 +1025,9 @@ function ui(){relabelCh();relLand();const r=document.documentElement;r.lang=L;r.
  const s=$('#exl');s.textContent='';['e1','e2','e3','e4','e5'].forEach((k,i)=>{const b=E('button','',s);b.textContent=tr(k);b.onclick=()=>{load(EXS[i]());tidyWs();$('#mn').close()}});
  $('#bl').textContent=L=='ar'?'English':'العربية';tabs();pal();rw();tray();fsUI();ccUI()}
 $('#bch').onclick=openChars;$('#cx').onclick=()=>$('#cd').close();$('#cdn').onclick=addPicked;
-$('#bm').onclick=$('#hx').onclick=()=>$('#mn').showModal();$('#mc').onclick=()=>$('#mn').close();$('#sz').onclick=()=>document.body.classList.toggle('big');$('#pc').onclick=()=>$('#pal').classList.remove('open');$('#bn').onclick=newProj;$('#bbk').onclick=openBk;$('#bkx').onclick=()=>$('#bk').close();$('#bpn').onclick=()=>openPaint('bd',0);$('#bed').onclick=()=>openPaint('bd',1);$('#dch').onclick=()=>openPaint('ch',0);$('#pdx').onclick=()=>{$('#pd').close();if(pmode=='ch'){pick.clear();cards();$('#cd').showModal()}else openBk()};$('#pun').onclick=()=>pgo(-1);$('#pre').onclick=()=>pgo(1);$('#pcl2').onclick=()=>{VO=[];VS=[];psnap();pdraw();pact()};
+$('#bm').onclick=$('#hx').onclick=()=>$('#mn').showModal();$('#mc').onclick=()=>$('#mn').close();$('#sz').onclick=()=>document.body.classList.toggle('big');$('#pc').onclick=()=>$('#pal').classList.remove('open');$('#bn').onclick=newProj;$('#bbk').onclick=openBk;$('#bkx').onclick=()=>$('#bk').close();$('#bpn').onclick=()=>openPaint('bd',0);$('#bed').onclick=()=>openPaint('bd',1);$('#dch').onclick=()=>openPaint('ch',0);$('#pdx').onclick=()=>{$('#pd').close();if(pmode=='ch'){if(!pt.edit){pick.clear();cards();$('#cd').showModal()}}else openBk()};$('#pun').onclick=()=>pgo(-1);$('#pre').onclick=()=>pgo(1);$('#pcl2').onclick=()=>{VO=[];VS=[];psnap();pdraw();pact()};
 $('#bka').onclick=()=>{[...bpick].forEach(k=>P.bds.push({k}));if(bpick.size)bd=P.bds.length;bpick.clear();persist();rw();pal();bkList();bkGrid()};
-$('#psv').onclick=()=>{if(pmode=='ch'){if(!VO.length)return;const id='u'+(P.cust.reduce((m,u)=>Math.max(m,+u.id.slice(1)),0)+1),u={id,n:tr('mych')+' '+id.slice(1),d:expCh(),v:{o:JSON.parse(JSON.stringify(VO))}};P.cust.push(u);regC(u);const full=P.sprites.length>=MAXS;addSprite(id);$('#pd').close();if(full)toast(tr('maxch'));else selSprite(P.sprites.length-1);persist();return}
+$('#psv').onclick=()=>{if(pmode=='ch'){if(!VO.length)return;if(chSave())return;const id='u'+(P.cust.reduce((m,u)=>Math.max(m,+u.id.slice(1)),0)+1),u={id,n:tr('mych')+' '+id.slice(1),d:expCh(),v:{o:JSON.parse(JSON.stringify(VO))}};P.cust.push(u);regC(u);const full=P.sprites.length>=MAXS;addSprite(id);$('#pd').close();if(full)toast(tr('maxch'));else selSprite(P.sprites.length-1);persist();return}
  const c=document.createElement('canvas');c.width=480;c.height=360;paint(c.getContext('2d'),480,360,1);const e={k:'custom',d:c.toDataURL('image/png'),n:tr('bdn')+' '+(pt.edit?bd:P.bds.length+1),v:{o:VO,bg:pbg,b:VO.some(o=>o.t=='i')?pbU:null}};
  if(pt.edit)P.bds[bd-1]=e;else{P.bds.push(e);bd=P.bds.length}persist();rw();pal();$('#pd').close();openBk()};
 $('#bu').onclick=()=>undo(-1);$('#br').onclick=()=>undo(1);
@@ -1088,6 +1093,108 @@ for(const v of['fullscreenchange','webkitfullscreenchange'])document.addEventLis
 function ccUI(){for(const[q,k]of[['#pg','pad'],['#fpg','pad'],['#zb','csize'],['#fzb','csize']]){$(q).title=tr(k);$(q).setAttribute('aria-label',tr(k))}
  pad.setAttribute('aria-label',tr('pad'));zp.setAttribute('aria-label',tr('csize'));pad.querySelectorAll('button').forEach(b=>{b.title=tr(b.dataset.l);b.setAttribute('aria-label',tr(b.dataset.l))});
  pad.querySelector('[data-k=space]').textContent=tr('padS');$('#zz').textContent=tr('reset');$('#zm').title=tr('smaller');$('#zpl').title=tr('bigger');zr.setAttribute('aria-label',tr('csize'));zn.setAttribute('aria-label',tr('csize'))}
+/* ===== v19 additions ===== */
+Object.assign(UI.en,{editChar:'Edit character',pad2:'Player 2 pad'});Object.assign(UI.ar,{editChar:'تعديل الشخصية',pad2:'لوحة اللاعب الثاني'});
+Object.assign(AR,{tcol:'ألمس اللون %1 ؟',ctcol:'اللون %1 يلمس اللون %2 ؟'});
+/* 1) dropdown inputs accept reporters/variables, like Scratch (fields such as effect names or rotation style stay plain menus) */
+const DROP=new Set(['gotoR:0','glideT:1','pointM:0','switchC:0','switchB:0','switchBW:0','sound:0','ssnd:0','bcast:0','bcastW:0','keyp:0','touching:0','dist:0','mkclone:0','sof:1']);
+/* 2) colour sensing: touching color / color touching color (samples the stage under the character) */
+const hx=h=>[1,3,5].map(i=>parseInt((h||'#000000').slice(i,i+2),16)||0),cnear=(d,j,c)=>Math.abs(d[j]-c[0])<=12&&Math.abs(d[j+1]-c[1])<=12&&Math.abs(d[j+2]-c[2])<=12,
+mkc=()=>{const c=document.createElement('canvas');c.width=480;c.height=360;return c.getContext('2d',{willReadFrequently:true})},CG=mkc(),CK=mkc();
+function colTouch(p,c1,c2){if(!p.v)return false;const h=Math.ceil(45*p.z/100)+2,x=Math.max(0,Math.floor(240+p.x-h)),y=Math.max(0,Math.floor(180-p.y-h)),w=Math.min(480,Math.floor(240+p.x+h))-x,ht=Math.min(360,Math.floor(180-p.y+h))-y;if(w<=0||ht<=0)return false;
+ CG.clearRect(0,0,480,360);CK.clearRect(0,0,480,360);CG.drawImage(bdc(P.bds[bd-1]||P.bds[0]),0,0);CG.drawImage(penCv,0,0);for(const q of SP)if(q!==p&&q.v)drawSprite(CG,q);drawSprite(CK,p);
+ const a=CK.getImageData(x,y,w,ht).data,b=CG.getImageData(x,y,w,ht).data,A=c2?hx(c1):null,T=hx(c2||c1);
+ for(let i=0;i<a.length;i+=4)if(a[i+3]>40&&(!A||cnear(a,i,A))&&b[i+3]>0&&cnear(b,i,T))return true;return false}
+R('tcol','sensing','bool','touching color %1 ?',['#e5484d'],'True if this character touches that colour on the stage.',(t,a)=>colTouch(t.p,a[0]),{col:{0:1}});
+R('ctcol','sensing','bool','color %1 is touching %2 ?',['#4c6fff','#e5484d'],'True if the first colour on this character touches the second colour.',(t,a)=>colTouch(t.p,a[0],a[1]),{col:{0:1,1:1}});
+/* 3) edit a drawn character later (built-in characters open as an editable copy) */
+function editChar(){const e=P.sprites[P.cur],u=P.cust.find(x=>x.id==e.k);openPaint('ch',1);pt.eid=u?u.id:null;
+ const img=s=>{pbU=s;pbase=new Image();pbase.onload=pdraw;pbase.src=s};
+ if(u&&u.v&&u.v.o){VO=JSON.parse(JSON.stringify(u.v.o));if(u.v.b)img(u.v.b)}else{img(IM[e.k][0].src);VO=[{t:'i',pts:[[50,50],[310,310]],s:0,c:'#000'}]}
+ VS=[];vh=[];vi=-1;psnap();pdraw();pact();$('#ptt').textContent=tr('editChar')}
+function chSave(){if(!pt.edit)return 0;const v={o:JSON.parse(JSON.stringify(VO)),b:VO.some(o=>o.t=='i')?pbU:null};let u=P.cust.find(x=>x.id==pt.eid);
+ if(u){u.d=expCh();u.v=v;regC(u)}else{const id='u'+(P.cust.reduce((m,x)=>Math.max(m,+x.id.slice(1)),0)+1);u={id,n:tr('mych')+' '+id.slice(1),d:expCh(),v};P.cust.push(u);regC(u);P.sprites[P.cur].k=id;OS[P.cur].k=id}
+ $('#pd').close();persist();tray();wake();return 1}
+$('#ced').onclick=editChar;
+/* 4) second on-screen pad for two-player games: W A S D + E (physical keys work too) */
+const pad2=$('#pad2'),PK2=[['w','padU',0,'left:35%;top:3%'],['s','padD',180,'left:35%;bottom:3%'],['a','padL',270,'left:3%;top:35%'],['d','padR',90,'right:3%;top:35%'],['e','padS',-1,'left:34%;top:34%;width:32%;height:32%']];
+for(const[k,i,r,pos]of PK2){const b=E('button','',pad2);b.dataset.k=k;b.style.cssText=pos;b.dataset.l=i;
+ if(r>=0)b.innerHTML='<svg viewBox="0 0 24 24" style="transform:rotate('+r+'deg)"><path d="M12 5l8 13H4z" fill="currentColor"/></svg>';else b.textContent='E';
+ const up=()=>{if(b._id==null)return;b._id=null;b.classList.remove('on');padSet(k,0)};b._rel=up;
+ b.addEventListener('pointerdown',e=>{if(e.button>0||b._id!=null)return;b._id=e.pointerId;b.classList.add('on');try{b.setPointerCapture(e.pointerId)}catch(_){}padSet(k,1)});
+ for(const v of['pointerup','pointercancel','lostpointercapture'])b.addEventListener(v,e=>{if(e.pointerId===b._id)up()});
+ b.addEventListener('mousedown',e=>e.preventDefault());
+ b.addEventListener('keydown',e=>{if(e.key=='Enter'&&!e.repeat&&b._id==null){b._id='kb';b.classList.add('on');padSet(k,1)}});
+ b.addEventListener('keyup',e=>{if(e.key=='Enter'&&b._id=='kb')up()});b.addEventListener('blur',up)}
+const p2Rel=()=>pad2.querySelectorAll('button').forEach(b=>b._rel&&b._rel());
+function p2Place(x,y){const w=pad2.offsetWidth||176,m=6;pad2.style.left=Math.max(m,Math.min(innerWidth-w-m,x))+'px';pad2.style.top=Math.max(m,Math.min(innerHeight-w-m,y))+'px'}
+pad2.addEventListener('contextmenu',e=>e.preventDefault());
+pad2.addEventListener('pointerdown',e=>{if(e.target!==pad2||e.button>0)return;const r=pad2.getBoundingClientRect();pad2._d={id:e.pointerId,dx:e.clientX-r.left,dy:e.clientY-r.top};try{pad2.setPointerCapture(e.pointerId)}catch(_){}pad2.style.cursor='grabbing'});
+pad2.addEventListener('pointermove',e=>{const d=pad2._d;if(d&&e.pointerId==d.id)p2Place(e.clientX-d.dx,e.clientY-d.dy)});
+const p2End=e=>{if(pad2._d&&e.pointerId==pad2._d.id){pad2._d=null;pad2.style.cursor=''}};pad2.addEventListener('pointerup',p2End);pad2.addEventListener('pointercancel',p2End);
+function pad2Show(on){pad2.hidden=!on;for(const q of['#pg2','#fpg2'])$(q).setAttribute('aria-pressed',!!on);if(on){if(!pad2.style.left)p2Place(14,innerHeight-pad2.offsetHeight-14);else p2Place(parseFloat(pad2.style.left),parseFloat(pad2.style.top))}else p2Rel()}
+for(const q of['#pg2','#fpg2'])$(q).onclick=()=>pad2Show(pad2.hidden);
+new MutationObserver(p2Rel).observe($('#askbox'),{attributes:true,attributeFilter:['hidden']});
+addEventListener('blur',p2Rel);document.addEventListener('visibilitychange',p2Rel);
+addEventListener('resize',()=>{if(!pad2.hidden)p2Place(parseFloat(pad2.style.left),parseFloat(pad2.style.top))});
+for(const v of['fullscreenchange','webkitfullscreenchange'])document.addEventListener(v,()=>{if(!pad2.hidden)requestAnimationFrame(()=>p2Place(parseFloat(pad2.style.left),parseFloat(pad2.style.top)))});
+{const _cc=ccUI;ccUI=function(){_cc();for(const q of['#pg2','#fpg2']){$(q).title=tr('pad2');$(q).setAttribute('aria-label',tr('pad2'))}pad2.setAttribute('aria-label',tr('pad2'));pad2.querySelectorAll('button').forEach(b=>{b.title=tr(b.dataset.l)+' · P2';b.setAttribute('aria-label',b.title)});$('#ced').title=tr('editChar');$('#ced').setAttribute('aria-label',tr('editChar'))}}
+/* ===== variables & lists, the way Scratch does them ===== */
+Object.assign(UI.en,{vx_vnew:'New variable',vx_lnew:'New list',vx_vnm:'New variable name:',vx_lnm:'New list name:',vx_all:'For all characters',vx_this:'For this character only',vx_cancel:'Cancel',vx_vdup:'A variable named "%1" already exists.',vx_ldup:'A list named "%1" already exists.',vx_vren:'Rename variable',vx_lren:'Rename list',vx_vdel:'Delete the "%1" variable',vx_ldel:'Delete the "%1" list',vx_show:'Show on stage',vx_rdone:'Renamed'});
+Object.assign(UI.ar,{vx_vnew:'متغير جديد',vx_lnew:'قائمة جديدة',vx_vnm:'اسم المتغير الجديد:',vx_lnm:'اسم القائمة الجديدة:',vx_all:'لكل الشخصيات',vx_this:'لهذه الشخصية فقط',vx_cancel:'إلغاء',vx_vdup:'يوجد متغير باسم «%1» بالفعل.',vx_ldup:'توجد قائمة باسم «%1» بالفعل.',vx_vren:'إعادة تسمية المتغير',vx_lren:'إعادة تسمية القائمة',vx_vdel:'حذف المتغير «%1»',vx_ldel:'حذف القائمة «%1»',vx_show:'إظهار على المسرح',vx_rdone:'تمت إعادة التسمية'});
+const VSL={var:[0],setv:[0],chv:[0],showv:[0],hidev:[0]},LSL={lvar:[0],ladd:[1],ldel:[1],ldelall:[0],lins:[2],lrep:[1],litem:[1],lidx:[1],llen:[0],lcont:[0],showv:[0],hidev:[0]};
+const vTaken=(n,loc)=>hk(P.vars,n)||hk(P.lists,n)||hk(main.lv,n)||hk(main.ll,n)||(!loc&&OS.some(q=>hk(q.lv,n)||hk(q.ll,n)));
+const vLoc=q=>{const e=P.sprites[P.cur];return e[q]=main[q]=e[q]||main[q]||{}};
+const deepN=(l,f)=>{for(const n of l.slice()){f(n,l);(n.a||[]).forEach(x=>{if(x&&x.id)deepN([x],f)});(n.s||[]).forEach(x=>deepN(x,f))}};
+function vBak(){return JSON.stringify({v:P.vars,l:P.lists,m:P.mon,s:P.sprites.map(e=>({sc:e.scripts,lv:e.lv,ll:e.ll,lm:e.lm}))})}
+function vRes(j){const o=JSON.parse(j);P.vars=o.v;P.lists=o.l;P.mon=o.m;P.sprites.forEach((e,i)=>{const s=o.s[i];if(!s)return;e.scripts=s.sc;for(const k of['lv','ll','lm']){if(s[k]){e[k]=s[k];if(OS[i])OS[i][k]=s[k]}else{delete e[k];if(OS[i])delete OS[i][k]}}});snap();rw();pal();wake();persistNow()}
+/* "Make a Variable" / "Make a List" dialog: name + scope, Enter = OK, Esc = cancel, duplicate names refused */
+function newVar(k){const isL=k=='l';let d=$('#vd');if(d)d.remove();d=E('dialog','',document.body);d.id='vd';
+ E('b','',E('div','dh',d)).textContent=tr(isL?'vx_lnew':'vx_vnew');
+ E('p','',d).textContent=tr(isL?'vx_lnm':'vx_vnm');
+ const i=E('input','',d);i.id='vdi';i.maxLength=80;i.autocomplete='off';i.setAttribute('aria-label',tr(isL?'vx_lnm':'vx_vnm'));
+ const rg=E('div','',d);[['g','vx_all'],['l','vx_this']].forEach(([v,t],j)=>{const lb=E('label','',rg),r=E('input','',lb);r.type='radio';r.name='vscope';r.value=v;r.checked=!j;E('span','',lb).textContent=tr(t)});
+ const er=E('p','verr',d);er.setAttribute('role','alert');
+ const bt=E('div','btns',d),c=E('button','',bt);c.textContent=tr('vx_cancel');E('span','',bt).style.flex='1';const ok=E('button','',bt);ok.textContent='OK';ok.style.cssText='background:var(--ac);color:#fff;border:0';
+ const go=()=>{const n=i.value.trim();if(!n){i.focus();return}const loc=d.querySelector('input[name=vscope]:checked').value=='l';
+  if(vTaken(n,loc)){er.textContent=tr(isL?'vx_ldup':'vx_vdup').replace('%1',n);i.focus();i.select();return}
+  if(loc){vLoc(isL?'ll':'lv')[n]=isL?[]:0;vLoc('lm')[n]=1}else{(isL?P.lists:P.vars)[n]=isL?[]:0;P.mon[n]=1}
+  d.close();persistNow();pal();wake()};
+ ok.onclick=go;c.onclick=()=>d.close();i.onkeydown=e=>{if(e.key=='Enter'){e.preventDefault();go()}};i.oninput=()=>{er.textContent=''};
+ d.addEventListener('close',()=>d.remove());d.showModal();i.focus()}
+/* palette for the Variables category: Make a Variable, reporters with show-checkbox, set/change/show/hide, Make a List, list reporters, list blocks */
+function varPal(c,add,hv,hl){
+ const mk=(k,f)=>{const b=E('button','mkb',c);b.textContent=tr(k);b.onclick=()=>mkname(f)};
+ const row=(n,id)=>{const isL=id=='lvar',r=E('div','vrow',c),k=E('input','',r);k.type='checkbox';k.checked=monGet(main,n);k.title=tr('vx_show');k.setAttribute('aria-label',tr('vx_show')+': '+n);
+  k.onchange=()=>{monSet(main,n,k.checked?1:0);persistNow();wake()};
+  r.append(rb({id,a:[n],s:[]}));
+  const e=E('button','ib',r),x=E('button','ib',r),T=[tr(isL?'vx_lren':'vx_vren'),tr(isL?'vx_ldel':'vx_vdel').replace('%1',n)];
+  e.textContent='✎';x.textContent='🗑';e.title=T[0];x.title=T[1];e.setAttribute('aria-label',T[0]);x.setAttribute('aria-label',T[1]);
+  e.onclick=()=>pickName(n,v=>renVar(n,v,isL),T[0]);x.onclick=()=>delVar(n,isL);
+  r.oncontextmenu=ev=>{ev.preventDefault();vMenu(ev.clientX,ev.clientY,n,isL)}};
+ const blocks=l=>{for(const id in B){const d=B[id];if(d.c=='vars'&&!d.hide&&(l?d.need=='l':d.need!='l')&&!(d.need=='v'&&!hv)&&!(d.need=='l'&&!hl))add(N(id))}};
+ mk('mkv','v');VN().forEach(n=>row(n,'var'));blocks(0);
+ mk('mkl','l');LN().forEach(n=>row(n,'lvar'));blocks(1)}
+function vMenu(x,y,n,isL){const m=$('#menu');m.textContent='';m.style.left=x+'px';m.style.top=y+'px';m.hidden=false;
+ const add=(t,f)=>{const b=E('button','',m);b.textContent=t;b.onclick=()=>{m.hidden=true;f()}},t=tr(isL?'vx_lren':'vx_vren');
+ add(t,()=>pickName(n,v=>renVar(n,v,isL),t));add(tr(isL?'vx_ldel':'vx_vdel').replace('%1',n),()=>delVar(n,isL))}
+/* rename: updates every block that uses it, keeps the value and the monitor */
+function renVar(o,v,isL){v=(v||'').trim();if(!v||v==o)return;const q=isL?'ll':'lv',loc=hk(main[q],o);
+ if(vTaken(v,loc)){toast(tr(isL?'vx_ldup':'vx_vdup').replace('%1',v));return}
+ const bak=vBak(),cont=loc?main[q]:(isL?P.lists:P.vars),mon=loc?main.lm:P.mon,ent=Object.entries(cont);
+ for(const x in cont)delete cont[x];ent.forEach(([x,y])=>{cont[x==o?v:x]=y});if(mon&&o in mon){mon[v]=mon[o];delete mon[o]}
+ const sl=isL?LSL:VSL,f=n=>{const s=sl[n.id];if(s)s.forEach(i=>{if(n.a[i]===o)n.a[i]=v})};
+ (loc?[P.sprites[P.cur]]:P.sprites).forEach(e=>e.scripts.forEach(sc=>deepN(sc.b,f)));
+ snap();rw();pal();wake();persistNow();toast(tr('vx_rdone'),()=>vRes(bak))}
+/* delete: removes it and every block that uses it (undoable) */
+function delVar(n,isL){const q=isL?'ll':'lv',loc=hk(main[q],n),bak=vBak(),sl=isL?LSL:VSL;
+ const hit=x=>{const s=sl[x.id];return !!s&&s.some(i=>x.a[i]===n)};
+ const pr=x=>{(x.a||[]).forEach((y,k)=>{if(y&&y.id){if(hit(y))x.a[k]=B[x.id].a[k];else pr(y)}})};
+ const purge=l=>{for(let i=l.length-1;i>=0;i--){const x=l[i];if(hit(x)){l.splice(i,1);continue}pr(x);(x.s||[]).forEach(purge)}};
+ (loc?[P.sprites[P.cur]]:P.sprites).forEach(e=>{e.scripts.forEach(sc=>purge(sc.b));e.scripts=e.scripts.filter(sc=>sc.b.length)});
+ const cont=loc?main[q]:(isL?P.lists:P.vars),mon=loc?main.lm:P.mon;delete cont[n];if(mon)delete mon[n];
+ if(loc){const e=P.sprites[P.cur];for(const k of['lv','ll','lm'])if(main[k]&&!Object.keys(main[k]).length){delete main[k];delete e[k]}}
+ snap();rw();pal();wake();persistNow();toast(tr('deleted'),()=>vRes(bak))}
 try{const s=JSON.parse(localStorage.getItem('bp'));if(s&&(Array.isArray(s.scripts)||Array.isArray(s.sprites)))P=s}catch(e){}
 wrap(P);boot();rebuildTimerWatch();
 snap();ui();wake();
