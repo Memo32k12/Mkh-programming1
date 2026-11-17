@@ -328,6 +328,36 @@ dialog{padding:var(--s4);max-height:94dvh}.dh{font-size:17px}
 /* variables UI (Scratch style) */
 .vrow{display:flex;align-items:center;gap:8px;margin:8px 0}.vrow>input[type=checkbox]{width:20px;height:20px;flex:none;margin:0;accent-color:var(--ac)}#blocks .vrow .b{margin:0;min-width:0;max-width:100%}.vrow .ib{width:34px;min-height:34px;font-size:14px;flex:none;padding:0}
 #vd{width:min(92vw,400px)}#vd p{margin:12px 0 0}#vdi{width:100%;box-sizing:border-box;min-height:46px;margin-top:var(--s3);border:1px solid var(--ln);border-radius:var(--r1);padding:0 var(--s3);background:var(--ws);color:var(--tx);font:inherit;font-weight:700}#vd label{display:flex;align-items:center;gap:10px;padding:10px 0;font-weight:600}#vd label input{width:20px;height:20px;margin:0;accent-color:var(--ac)}#vd .verr{color:#e5484d;margin:6px 0 0;min-height:0;font-weight:600}#vd .verr:empty{display:none}
+/* ===== My Blocks (Scratch style) ===== */
+#mbd{width:min(94vw,560px)}
+.mbpv{display:flex;align-items:center;min-height:92px;margin:var(--s3) 0 0;padding:var(--s4);box-sizing:border-box;background:var(--ws);border-radius:var(--r2);box-shadow:inset 0 0 0 1px var(--ln);overflow:auto;direction:var(--d)}
+.mbb{position:relative;display:block;width:max-content;max-width:100%;box-sizing:border-box;padding:8px 12px;color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 1px #0004;background:#ff6680;border-radius:7px;box-shadow:inset 0 1px 0 #ffffff55,0 2px 0 #ff3355}
+.mbb .rr{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.mbl{display:inline-flex;align-items:center;gap:4px}
+.mbl input,.mbp input{font:inherit;font-weight:800;border:0;outline:0;min-width:0;text-align:center;box-sizing:content-box}
+.mbl input{height:28px;padding:0 10px;border-radius:16px;background:#fff;color:#1b2233;text-shadow:none}
+.mbp{display:inline-flex;align-items:center;gap:2px;height:30px;padding:0 6px 0 10px;background:#ff3355;box-shadow:inset 0 -2px 0 #0003}
+.mbp.n{border-radius:16px}
+.mbp.b{padding:0 18px;clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%)}
+.mbp input{height:24px;padding:0 4px;background:transparent;color:#fff;text-shadow:none}
+.mbx{width:22px;min-height:22px;height:22px;padding:0;border:0;border-radius:50%;background:#0003;color:#fff;font-size:10px;line-height:1;display:inline-grid;place-items:center;flex:none}
+.mbx:hover:not(:disabled){background:#0006}
+.mbadd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2);margin-top:var(--s3)}
+.mbadd button{display:grid;justify-items:center;align-content:center;gap:3px;min-height:74px;padding:var(--s2);text-align:center;line-height:1.25}
+.mbadd small{color:var(--mut);font-weight:600;font-size:11px}
+.mbg{width:36px;height:20px;background:#ff3355;box-shadow:inset 0 -2px 0 #0003}
+.mbg.n{border-radius:10px}
+.mbg.b{clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%)}
+.mbg.l{background:#fff;border-radius:10px;box-shadow:inset 0 0 0 2px var(--ln)}
+.mbw{display:flex;align-items:center;gap:var(--s2);margin-top:var(--s4);font-weight:700}
+.mbw input{width:20px;height:20px;margin:0;accent-color:var(--ac)}
+.mberr{color:#e5484d;margin:var(--s2) 0 0;min-height:0;font-weight:600}.mberr:empty{display:none}
+.mbrow{display:flex;align-items:center;flex-wrap:wrap;gap:var(--s2);margin-block:var(--s3)}
+.mbtools{display:flex;gap:4px;margin-inline-start:auto}
+.mbtools .ib{width:34px;min-height:34px;font-size:14px}
+.mbtools .ib:last-child:hover{background:#e5484d22;border-color:#e5484d}
+.mbproto{display:inline-flex;align-items:center;gap:7px;padding:3px 8px;background:#ff4d6a;border-radius:8px;box-shadow:inset 0 0 0 1px #0002}
+.mbarg{cursor:grab}.mbarg.t-rep .r{min-height:24px;padding:1px 10px}.mbarg.t-bool .r{min-height:24px}
 </style></head><body class="landing">
 <header id="top"><b class="brand" data-i="title"></b><span id="svs" role="status" hidden><b></b><span></span></span><button id="bn"><span>＋</span><span class="lb" data-i="np"></span></button><button class="ib" id="bu">↶</button><button class="ib" id="br">↷</button><button class="ib" id="bc">✨</button><button class="ib" id="bm">☰</button></header>
 <div id="app"><nav id="rail"></nav>
@@ -750,7 +780,7 @@ const prune=()=>P.scripts=P.scripts.filter(s=>s.b.length);
 addEventListener('pointerdown',e=>{
  if(!e.target.closest('#menu'))$('#menu').hidden=true;
  const el=e.target.closest('.b');if(!el&&e.target.closest('#ws'))desel();if(!el||e.target.matches('input,select')||e.button>0)return;
- const r0=el.getBoundingClientRect(),pal=!!el.closest('#blocks');
+ const r0=el.getBoundingClientRect(),pal=!!el.closest('#blocks')||!!el._cp;
  drag={el,pal,x:e.clientX,y:e.clientY,ox:e.clientX-r0.left,oy:e.clientY-r0.top,on:0};
  if(e.pointerType!='mouse')lp=setTimeout(()=>{if(drag&&!drag.on&&!pal){cm(e.clientX,e.clientY,el);drag=null}},600)},true);
 addEventListener('pointermove',e=>{if(!drag)return;if(!drag.on){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;clearTimeout(lp);begin()}
@@ -947,13 +977,83 @@ function renBlock(o,v){v=v.trim();if(!v||v==o)return;if(BK().includes(v)){toast(
 function delBlock(nm){const bak=JSON.stringify({b:BK(),s:P.sprites.map(x=>x.scripts)});P.blocks=BK().filter(x=>x!=nm);
  P.sprites.forEach(s=>{s.scripts=s.scripts.filter(sc=>!(sc.b[0]&&sc.b[0].id=='define'&&sc.b[0].a[0]==nm));s.scripts.forEach(sc=>walkN(sc.b,(n,l)=>{if(n.id=='call'&&n.a[0]==nm)l.splice(l.indexOf(n),1)}));s.scripts=s.scripts.filter(sc=>sc.b.length)});
  snap();rw();pal();toast(L=='ar'?'تم حذف الكتلة «'+nm+'»':'Deleted block "'+nm+'"',()=>{const o=JSON.parse(bak);P.blocks=o.b;P.sprites.forEach((x,i)=>x.scripts=o.s[i]);snap();rw();pal()})}
+/* ===== My Blocks, Scratch style: Make a Block dialog, several inputs (number/text + boolean), labels, argument reporters, run without screen refresh ===== */
+Object.assign(UI.en,{mkb:'Make a Block',mbT:'Make a Block',mbE:'Edit block',mbN:'Add an input',mbNs:'number or text',mbB:'Add an input',mbBs:'boolean',mbL:'Add a label',mbW:'Run without screen refresh',mbC:'Cancel',mbOk:'OK',mbPh:'block name',mbEd:'Edit',mbNo:'Give your block a name.',mbDup:'A block with this name and shape already exists.',mbRm:'Remove',mbUp:'Block updated',mbDef:'define',mbIn:'Input name'});
+Object.assign(UI.ar,{mkb:'إنشاء كتلة',mbT:'إنشاء كتلة',mbE:'تعديل الكتلة',mbN:'إضافة مُدخل',mbNs:'رقم أو نص',mbB:'إضافة مُدخل',mbBs:'منطقي',mbL:'إضافة نص',mbW:'التشغيل بدون تحديث الشاشة',mbC:'إلغاء',mbOk:'موافق',mbPh:'اسم الكتلة',mbEd:'تعديل',mbNo:'أعطِ الكتلة اسمًا.',mbDup:'توجد كتلة بنفس الاسم والشكل.',mbRm:'إزالة',mbUp:'تم تحديث الكتلة',mbDef:'عرّف',mbIn:'اسم المُدخل'});
+/* a block = P.mb[key]={p:[parts],w:warp}; part = {t:'l'|'n'|'b',v:text|input name}. Blocks saved by the old version have no spec: one label + one input called "input". */
+const specOf=k=>{const s=P.mb&&P.mb[k];return s&&Array.isArray(s.p)?s:{p:[{t:'l',v:k},{t:'n',v:'input'}],w:0}},mbIns=sp=>sp.p.filter(q=>q.t!='l');
+R('arg','myblocks','rep','%1',[''],'A value given to this block. Drag a copy into the blocks below it.',(t,a)=>{const f=t.fr&&t.fr[t.fr.length-1],m=f&&f.m;return m&&a[0] in m?m[a[0]]:0},{hide:1});
+R('barg','myblocks','bool','%1',[''],'A true/false value given to this block. Drag a copy into the blocks below it.',(t,a)=>{const f=t.fr&&t.fr[t.fr.length-1],m=f&&f.m;return !!(m&&a[0] in m&&m[a[0]])},{hide:1});
+B.inp.x=t=>{const f=t.fr&&t.fr[t.fr.length-1];return f&&f.v&&f.v.length?f.v[0]:0};
+B.call.x=function*(t,a){const k=a[0],f=findDef(t.p,k);if(!f)throw Error(L=='ar'?'هذه الكتلة غير معرّفة: ضع كتلة «عرّف» في مساحة العمل.':'This block is not defined yet: add its "define" block to the workspace.');
+ const sp=specOf(k),fr=t.fr||(t.fr=[]);if(fr.length>40)throw Error(L=='ar'?'تداخل كبير في استدعاء الكتل.':'Too many nested calls.');
+ const m=Object.create(null),v=[];mbIns(sp).forEach((q,j)=>{const x=a[j+1];v.push(x);m[q.v]=q.t=='b'?!!x:x});fr.push({v,m});
+ try{const g=run(f.b.slice(1),t);
+  if(sp.w){let dl=performance.now()+400,r={};while(!t.stop&&!(r=g.next()).done){t.n=0;if(performance.now()>dl){yield;dl=performance.now()+400}}if(!r.done)g.return()}
+  else yield*g}finally{fr.pop()}};
+function mbArg(n){const bo=n.id=='barg',e=E('div','b t-'+(bo?'bool':'rep')+' myblocks mbarg');e._n=n;if(n===selN)e.classList.add('sel');e.title=B[n.id].tip;e.style.setProperty('--k','#ff6680');E('span','',E('div','r',e)).textContent=n.a[0];return e}
+const _rb=rb;
+rb=function(n){
+ if(n.id=='arg'||n.id=='barg')return mbArg(n);
+ if(n.id!='define'&&n.id!='call')return _rb(n);
+ const d=B[n.id],sp=specOf(n.a[0]),e=E('div','b t-'+d.t+' myblocks'),r=E('div','r',e);
+ e._n=n;if(n===selN)e.classList.add('sel');e.title=d.tip;e.style.setProperty('--k',COL.myblocks);
+ if(n.id=='define'){E('span','',r).textContent=tr('mbDef');const pr=E('span','mbproto',r);
+  sp.p.forEach(q=>{if(q.t=='l')E('span','',pr).textContent=q.v;else{const c=mbArg({id:q.t=='b'?'barg':'arg',a:[q.v],s:[]});c._cp=1;pr.append(c)}})}
+ else{let k=0;sp.p.forEach(q=>{if(q.t=='l'){E('span','',r).textContent=q.v;return}k++;const x=n.a[k];if(x===undefined||(q.t=='n'&&x===null))n.a[k]='';else if(q.t=='b'&&x!==null&&!x.id)n.a[k]=null;r.append(sl(n,k))})}
+ return e};
+/* palette: Make a Block + one call block per custom block (with edit / delete) */
+function mbPal(c){BKN().forEach(k=>{const sp=specOf(k),r=E('div','mbrow',c),e=rb({id:'call',a:[k,...mbIns(sp).map(q=>q.t=='b'?null:'')],s:[]}),t=E('div','mbtools',r),T=L=='ar'?['تعديل','حذف']:['Edit','Delete'];e.style.margin='0';r.insertBefore(e,t);
+ [['✎',T[0],()=>mbOpen(k)],['🗑',T[1],()=>delBlock(k)]].forEach(([g,n,f])=>{const b=E('button','ib',t);b.textContent=g;b.title=n;b.setAttribute('aria-label',n);b.onclick=f})})}
+/* right-click / long-press on a define or call block: Edit */
+const _cm=cm;
+cm=function(x,y,el){_cm(x,y,el);const n=el._n;if(n&&(n.id=='define'||n.id=='call')){const m=$('#menu'),b=E('button','');b.textContent=tr('mbEd');b.onclick=()=>{m.hidden=true;mbOpen(n.a[0])};m.insertBefore(b,m.firstChild)}};
+/* the Make a Block / Edit dialog */
+function mbOpen(orig){
+ let d=$('#mbd');if(d)d.remove();d=E('dialog','',document.body);d.id='mbd';
+ const sp=orig?specOf(orig):null,S={p:sp?sp.p.map(q=>({t:q.t,v:q.v,o:q.t=='l'?undefined:q.v})):[{t:'l',v:''}],w:sp&&sp.w?1:0};
+ const h=E('div','dh',d);E('b','',h).textContent=tr(orig?'mbE':'mbT');const xb=E('button','ib',h);xb.textContent='✕';xb.setAttribute('aria-label',tr('mbC'));xb.onclick=()=>d.close();
+ const pv=E('div','mbpv',d),er=E('p','mberr',d);er.setAttribute('role','alert');
+ const sz=(i,q)=>{i.size=Math.max(q.t=='l'?6:3,(i.value||(q.t=='l'?tr('mbPh'):'')).length)};
+ const draw=f=>{pv.textContent='';const r=E('div','rr',E('div','mbb',pv));
+  S.p.forEach((q,i)=>{const w=E('span',q.t=='l'?'mbl':'mbp '+q.t,r),n=E('input','',w);n.value=q.v;n.maxLength=q.t=='l'?40:30;n.autocomplete='off';n.setAttribute('aria-label',q.t=='l'?tr('mbL'):tr('mbIn'));if(q.t=='l')n.placeholder=tr('mbPh');sz(n,q);n.oninput=()=>{q.v=n.value;sz(n,q);er.textContent=''};
+   if(S.p.length>1){const k=E('button','mbx',w);k.type='button';k.textContent='✕';k.title=tr('mbRm');k.setAttribute('aria-label',tr('mbRm'));k.onclick=()=>{S.p.splice(i,1);draw(Math.max(0,i-1))}}});
+  if(f!=null){const n=pv.querySelectorAll('input')[f];if(n){n.focus();n.select()}}};
+ const bar=E('div','mbadd',d);
+ [['mbN','mbNs','n'],['mbB','mbBs','b'],['mbL','','l']].forEach(([a,s,t])=>{const b=E('button','',bar);b.type='button';E('span','mbg '+t,b);E('b','',b).textContent=tr(a);if(s)E('small','',b).textContent=tr(s);
+  b.onclick=()=>{let v='';if(t!='l'){const base=tr(t=='n'?'mbNs':'mbBs');v=base;let i=2;while(S.p.some(q=>q.t!='l'&&q.v==v))v=base+' '+i++}S.p.push({t,v});draw(S.p.length-1)}});
+ const wl=E('label','mbw',d),wc=E('input','',wl);wc.type='checkbox';wc.checked=!!S.w;wc.onchange=()=>S.w=wc.checked?1:0;E('span','',wl).textContent=tr('mbW');
+ E('p','mberr',d).hidden=true;
+ const bt=E('div','btns',d),c=E('button','',bt);c.type='button';c.textContent=tr('mbC');E('span','',bt).style.flex='1';const ok=E('button','',bt);ok.type='button';ok.textContent=tr('mbOk');ok.style.cssText='background:var(--ac);color:#fff;border:0';
+ const go=()=>{S.p.forEach(q=>q.v=(q.v||'').replace(/\s+/g,' ').trim());
+  if(!S.p.some(q=>q.t=='l'&&q.v)){er.textContent=tr('mbNo');const f=pv.querySelector('.mbl input');f&&f.focus();return}
+  const P2=S.p.filter(q=>q.t!='l'||q.v),seen=new Set();
+  P2.forEach(q=>{if(q.t=='l')return;const b=q.v||tr(q.t=='n'?'mbNs':'mbBs');let n=b,i=2;while(seen.has(n))n=b+' '+i++;seen.add(q.v=n)});
+  const key=P2.map(q=>q.t=='l'?q.v:q.t=='n'?'%s':'%b').join(' ');
+  if(key!=orig&&BK().includes(key)){er.textContent=tr('mbDup');return}
+  d.close();mbSave(orig,key,P2,S.w)};
+ ok.onclick=go;c.onclick=()=>d.close();
+ d.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.matches('input:not([type=checkbox])')){e.preventDefault();go()}});
+ d.addEventListener('close',()=>d.remove());draw();d.showModal();const f0=pv.querySelector('input');f0&&(f0.focus(),f0.select())}
+/* create a new block (and drop its define hat in the workspace) or update an existing one everywhere it is used */
+function mbSave(orig,key,P2,w){
+ const sp={p:P2.map(q=>({t:q.t,v:q.v})),w:w?1:0};P.mb=P.mb||{};
+ if(!orig){BK().push(key);P.mb[key]=sp;pal();quick({id:'define',a:[key],s:[]});persistNow();return}
+ const o=mbIns(specOf(orig)),ix=new Map(o.map((q,j)=>[q.v,j])),ni=P2.filter(q=>q.t!='l'),ren=new Map(ni.filter(q=>q.o!==undefined).map(q=>[q.o,q])),
+ bak=JSON.stringify({b:BK(),m:P.mb,s:P.sprites.map(x=>x.scripts)});
+ P.sprites.forEach(s=>s.scripts.forEach(sc=>{
+  if(sc.b[0]&&sc.b[0].id=='define'&&sc.b[0].a[0]==orig){deepN(sc.b,n=>{if((n.id=='arg'||n.id=='barg')&&ren.has(n.a[0])){const q=ren.get(n.a[0]);n.a[0]=q.v;n.id=q.t=='b'?'barg':'arg'}});sc.b[0].a[0]=key}
+  walkN(sc.b,n=>{if(n.id=='call'&&n.a[0]==orig){const nv=[key];ni.forEach(q=>{const j=q.o!==undefined&&ix.has(q.o)?ix.get(q.o):-1,x=j>=0&&o[j].t==q.t?n.a[j+1]:undefined;nv.push(x!==undefined?x:q.t=='b'?null:'')});n.a=nv}})}));
+ BK()[BK().indexOf(orig)]=key;if(key!=orig)delete P.mb[orig];P.mb[key]=sp;
+ snap();rw();pal();persistNow();
+ toast(tr('mbUp'),()=>{const z=JSON.parse(bak);P.blocks=z.b;P.mb=z.m;P.sprites.forEach((e,i)=>e.scripts=z.s[i]);snap();rw();pal();persistNow()})}
 function tabs(){const t=$('#rail');t.textContent='';for(const c in COL){const b=E('button','',t),i=E('i','',b);i.textContent=ICO[c];b.style.setProperty('--k',COL[c]);E('span','',b).textContent=tr(c);b.setAttribute('aria-pressed',c==cat);b.onclick=()=>{const same=cat==c&&$('#pal').classList.contains('open');cat=c;tabs();pal();$('#pal').classList.toggle('open',!same)}}$('#ph').textContent=tr(cat)}
 function pal(){const c=$('#blocks'),hv=VN().length,hl=LN().length;c.textContent='';if(PQ){searchPal(c);return}
  const add=n=>{const e=rb(n);e.style.margin='8px 0';c.append(e)};
- if(cat=='myblocks'){const b=E('button','mkb',c);b.textContent=tr('mkb');b.onclick=()=>mkname('b')}
+ if(cat=='myblocks'){const b=E('button','mkb',c);b.textContent=tr('mkb');b.onclick=()=>mbOpen()}
  if(cat=='vars')varPal(c,add,hv,hl);
  else for(const id in B){const d=B[id];if(d.c==cat&&!d.hide&&!(d.need=='v'&&!hv)&&!(d.need=='l'&&!hl))add(N(id))}
- if(cat=='myblocks'){BKN().forEach(n=>{const r=E('div','mkr',c);E('b','',r).textContent=n;const e=E('button','ib',r),d=E('button','ib',r),T=L=='ar'?['إعادة تسمية','حذف','إعادة تسمية الكتلة']:['Rename','Delete','Rename block'];e.textContent='✎';d.textContent='🗑';e.title=T[0];d.title=T[1];e.setAttribute('aria-label',T[0]);d.setAttribute('aria-label',T[1]);e.onclick=()=>pickName(n,v=>renBlock(n,v),T[2]);d.onclick=()=>delBlock(n);add(N('define',[n]));add(N('call',[n,0]))});if(BK().length)add(N('inp'))}fitPal()}
+ if(cat=='myblocks')mbPal(c);fitPal()}
 function mkname(k){if(k=='v'||k=='l'){newVar(k);return}const d=E('div','mk'),i=E('input','',d);i.placeholder=tr('new');const b=E('button','',d);b.textContent='OK';
  b.onclick=()=>{const n=i.value.trim();if(!n)return;if(k=='b'){if(!BK().includes(n))BK().push(n);snap();pal();return}if(k=='v')P.vars[n]=0;else P.lists[n]=[];P.mon[n]=1;snap();pal()};$('#blocks').prepend(d);i.focus()}
 /* ===== workspace zoom + block search ===== */
